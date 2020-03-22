@@ -22,7 +22,7 @@ export default {
   data(){
     return {
       user: null,
-      endpoint: 'http://localhost:4000',
+      endpoint: 'https://bohio.me',
       result: []
     }
   },

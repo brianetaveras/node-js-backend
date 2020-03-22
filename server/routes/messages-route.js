@@ -11,7 +11,7 @@ function messagesRouter(io){
         try{
             const messages = await db.getAll();
             return res.json(messages)
-    
+
         } catch(err){
             next(err)
         }
