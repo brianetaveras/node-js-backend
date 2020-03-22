@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 class UserModel{
     async getAllUsers(){
         const users = await db('users').select("uid", "name", "email", "created_at")
-        
         return users;
     }
 

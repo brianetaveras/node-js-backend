@@ -3,19 +3,21 @@
    <v-card class="pa-5 home-card">
      <h1 v-if="user" class="text-center">Welcome home, {{user.name}}</h1>
      <h1 v-else class="text-center">Loading...</h1>
-     <h2 v-show="result">{{result}}</h2>
      <v-btn @click="logout" depressed class="red white--text" block>Log out</v-btn>
+     <User v-for="(user, index) in result" :key="index" :user="user"/>
    </v-card>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import User from '@/components/User.vue'
 import socketIOClient from "socket.io-client";
 import userModel from '@/utils/user.js';
 export default {
   name: 'Home',
   components: {
+    User
   },
   data(){
     return {
@@ -52,6 +54,9 @@ export default {
     transform: translate(-50%, -50%);
     width: 100%;
     max-width: 600px;
+    max-height: 500px;
+    overflow: hidden;
+    
     }
 }
 </style>
