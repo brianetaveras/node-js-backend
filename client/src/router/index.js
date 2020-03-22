@@ -19,12 +19,18 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/Login.vue')
+      component: () => import('../views/Login.vue'),
+      meta:{
+        authenticated: true
+      }
     },
     {
       path: '/signup',
       name: 'signup',
-      component: () => import('../views/Signup.vue')
+      component: () => import('../views/Signup.vue'),
+      meta:{
+        authenticated: true
+      }
     }
   ]
 })
@@ -44,5 +50,21 @@ router.beforeEach((to, from, next)=>{
     next()
   }
 })
+router.beforeEach((to, from, next)=>{
+  if(to.matched.some(rec=> rec.meta.authenticated)){
+    let token = localStorage.getItem('token');
+    if(token){
+      next({
+        name: 'home'
+      })
+    } else {
+      next()
+    }
+
+  }  else {
+    next()
+  }
+})
+
 
 export default router;

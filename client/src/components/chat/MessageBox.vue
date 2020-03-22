@@ -16,7 +16,7 @@ data(){
 },
 methods:{
     sendMessage(){
-        axiosWithAuth.post('http://localhost:4000/messages', {message: this.message}).then(res=>{
+        axiosWithAuth.post('https://bohio.me/messages', {message: this.message}).then(res=>{
             this.message = null
 
         }

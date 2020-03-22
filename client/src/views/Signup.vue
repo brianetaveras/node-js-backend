@@ -25,7 +25,7 @@ export default {
   methods: {
     signup() {
       axios
-        .post("http://localhost:4000/auth/signup", this.user)
+        .post("https://bohio.me/auth/signup", this.user)
         .then(res => {
           this.$router.push({ name: "login" });
         })

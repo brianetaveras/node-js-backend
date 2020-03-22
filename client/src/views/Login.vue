@@ -25,10 +25,10 @@ export default {
   },
   methods:{
     login(){
-      axios.post('http://localhost:4000/auth/login', this.user).then(res=>{
+      axios.post('https://bohio.me/auth/login', this.user).then(res=>{
         const token = res.data.token;
-        localStorage.setItem('token', token)
-        this.$router.push({name: 'home'})
+        localStorage.setItem('token', token);
+        window.location.reload()
       }).catch((err)=>{
         this.feedback = err.response.data.message
       })
