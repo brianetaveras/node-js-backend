@@ -29,7 +29,8 @@ export default {
 
 .chat-content{
     width: 100%;
-    height: 500px;
+    height: 80%;
+    max-height: 500px;
     overflow: scroll;
 
     &::-webkit-scrollbar {

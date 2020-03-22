@@ -1,8 +1,8 @@
 <template>
   <div class="home">
    <v-card class="pa-5 home-card">
-     <Chat class="mt-10" :messages="result"/>
      <v-btn class="red white--text" @click="logout">Log Out</v-btn>
+     <Chat class="mt-10" :messages="result"/>
    </v-card>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
   data(){
     return {
       user: null,
-      endpoint: 'https://bohio.me',
+      endpoint: 'https://bohio.m',
       result: []
     }
   },
@@ -54,6 +54,7 @@ export default {
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
+    max-height: 100vh;
     max-width: 600px;
     
     }
