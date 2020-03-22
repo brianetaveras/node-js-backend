@@ -1,10 +1,14 @@
 <template>
   <div class="chat">
       <div class="chat-content" v-chat-scroll="{always: false, smooth: true}">
-          <div v-for="(m, index) in messages" :key="index" class="chat-bubble cyan lighten-5 px-5 py-5 my-2">
+          <transition v-for="(m, index) in messages" :key="index" enter-active-class="animated fadeInDown">
+          <div class="chat-bubble cyan lighten-5 px-5 py-5 my-2">
               <div class="name light-blue--text darken-4 font-weight-bold">{{m.name}}</div>
               <div class="content py-3">{{m.message}}</div>
           </div>
+
+          </transition>
+
       </div>
       <v-spacer/>
       <MessageBox />

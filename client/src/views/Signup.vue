@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/utils/axiosWithAuth.js";
 export default {
   data() {
     return {
@@ -25,7 +25,7 @@ export default {
   methods: {
     signup() {
       axios
-        .post("https://bohio.me/auth/signup", this.user)
+        .post("/auth/signup", this.user)
         .then(res => {
           this.$router.push({ name: "login" });
         })

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/utils/axiosWithAuth.js'
 export default {
   data(){
     return {
@@ -25,7 +25,7 @@ export default {
   },
   methods:{
     login(){
-      axios.post('https://bohio.me/auth/login', this.user).then(res=>{
+      axios.post('/auth/login', this.user).then(res=>{
         const token = res.data.token;
         localStorage.setItem('token', token);
         window.location.reload()

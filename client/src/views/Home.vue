@@ -22,8 +22,8 @@ export default {
   data(){
     return {
       user: null,
-      endpoint: 'https://bohio.me/',
-      result: null
+      endpoint: 'http://localhost:4000',
+      result: []
     }
   },
   created(){
@@ -35,7 +35,7 @@ export default {
   },
   mounted(){
      const socket = socketIOClient(this.endpoint);
-    socket.on("FromAPI", data => this.result = data);
+    socket.on("chat message", data => this.result = [...this.result, data])
   },
   methods:{
     logout(){

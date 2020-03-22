@@ -28,6 +28,11 @@ router.post("/login", async (req, res, next) => {
       });
     }
     const user = await db.getUserByEmail(email);
+    if (!user){
+      res.status(404).json({
+        message: "User not found"
+      })
+    }
     const passwordMatches = await bcrypt.compare(password, user.password)
     if (user && passwordMatches) {
       const token = await jwt.sign({ id: user.uid }, process.env.JWT_SECRET,{

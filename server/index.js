@@ -18,26 +18,14 @@ app.use(require("cookie-parser")());
 const server = http.createServer(app);
 const io = socketio(server);
 app.use(require("cors")());
-const getApiAndEmit = async socket => {
-  try {
-    const users = await db.getAll()
-    socket.emit("FromAPI", users);
-  } catch (error) {
-    throw error;
-  }
-};
 
-let interval;
-
-io.on("connection", socket => {
-  console.log("New client connected");
-  if (interval) {
-    clearInterval(interval);
-  }
-  interval = setInterval(() => getApiAndEmit(socket), 1000);
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
   });
+
+  
+
 });
 
 app.get("/", require("./middleware/verifyUsersAuth")(), async (req, res) => {
@@ -48,7 +36,7 @@ app.get("/", require("./middleware/verifyUsersAuth")(), async (req, res) => {
 
 app.use("/auth", require("./routes/auth"));
 app.use("/user", require("./routes/user-router"));
-app.use('/messages', require('./routes/messages-route'))
+app.use('/messages', require('./routes/messages-route')(io))
 
 app.use((error, req, res, next) => {
   switch (error.code) {

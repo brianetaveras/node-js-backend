@@ -14,7 +14,9 @@ class Messages {
       uid: data.uid,
       message: data.message
     });
-    return newMessage;
+    return {
+      message: data.message
+    }
   }
 }
 

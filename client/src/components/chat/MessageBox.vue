@@ -11,13 +11,13 @@ import axiosWithAuth from '@/utils/axiosWithAuth.js'
 export default {
 data(){
     return {
-        message: null
+        message: ''
     }
 },
 methods:{
     sendMessage(){
-        axiosWithAuth.post('https://bohio.me/messages', {message: this.message}).then(res=>{
-            this.message = null
+        axiosWithAuth.post('/messages', {message: this.message}).then(res=>{
+            this.message = ''
 
         }
         )
