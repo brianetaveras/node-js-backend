@@ -6,6 +6,7 @@
          <v-text-field v-model="user.email" type="text" label="email" outlined />
          <v-text-field v-model="user.password" type="password" label="password" outlined />
          <v-btn type="submit" block class="blue white--text">Log in</v-btn>
+         <v-btn to="/signup" type="button" color="blue" outlined block class="mt-3">Sign up</v-btn>
          <div v-show="feedback" class="red--text text-center mt-3">{{feedback}}</div>
 
          </form>

@@ -13,7 +13,7 @@ router.post("/signup", async (req, res, next) => {
       });
     }
     await db.addUser(req.body);
-    res.redirect("/login");
+    res.json({message: 'success!'})
   } catch (err) {
     next(err);
   }

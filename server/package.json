@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -r dotenv/config index.js"
+    "dev": "nodemon -r dotenv/config index.js",
+    "migrate": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest",
+    "rollback": "node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:rollback"
   },
   "author": "",
   "license": "ISC",

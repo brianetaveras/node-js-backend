@@ -1,10 +1,8 @@
 <template>
   <div class="home">
    <v-card class="pa-5 home-card">
-     <h1 v-if="user" class="text-center">Welcome home, {{user.name}}</h1>
-     <h1 v-else class="text-center">Loading...</h1>
-     <v-btn @click="logout" depressed class="red white--text" block>Log out</v-btn>
-     <User v-for="(user, index) in result" :key="index" :user="user"/>
+     <Chat class="mt-10" :messages="result"/>
+     <v-btn class="red white--text" @click="logout">Log Out</v-btn>
    </v-card>
   </div>
 </template>
@@ -14,10 +12,12 @@
 import User from '@/components/User.vue'
 import socketIOClient from "socket.io-client";
 import userModel from '@/utils/user.js';
+import Chat from '@/components/chat/Chat.vue'
 export default {
   name: 'Home',
   components: {
-    User
+    Chat,
+
   },
   data(){
     return {
@@ -53,9 +53,8 @@ export default {
     left:50%;
     transform: translate(-50%, -50%);
     width: 100%;
+    height: 100%;
     max-width: 600px;
-    max-height: 500px;
-    overflow: hidden;
     
     }
 }

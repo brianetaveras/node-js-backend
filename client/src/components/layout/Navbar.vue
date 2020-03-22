@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar class="blue white--text" app>
+  <v-app-bar class="blue white--text">
       <h3>Logo</h3>
       <v-spacer></v-spacer>
       

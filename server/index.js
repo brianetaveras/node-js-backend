@@ -8,7 +8,7 @@ log4js.configure({
   appenders: { errors: { type: "file", filename: "errors.log" } },
   categories: { default: { appenders: ["errors"], level: "error" } }
 });
-const db = require("./models/user-model");
+const db = require("./models/messages-model");
 
 const logger = log4js.getLogger("errors");
 
@@ -20,7 +20,7 @@ const io = socketio(server);
 app.use(require("cors")());
 const getApiAndEmit = async socket => {
   try {
-    const users = await db.getAllUsers();
+    const users = await db.getAll()
     socket.emit("FromAPI", users);
   } catch (error) {
     throw error;
@@ -48,6 +48,7 @@ app.get("/", require("./middleware/verifyUsersAuth")(), async (req, res) => {
 
 app.use("/auth", require("./routes/auth"));
 app.use("/user", require("./routes/user-router"));
+app.use('/messages', require('./routes/messages-route'))
 
 app.use((error, req, res, next) => {
   switch (error.code) {
