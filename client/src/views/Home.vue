@@ -22,7 +22,7 @@ export default {
   data(){
     return {
       user: null,
-      endpoint: 'https://bohio.m',
+      endpoint: 'bohio.me',
       result: []
     }
   },
@@ -35,7 +35,10 @@ export default {
   },
   mounted(){
      const socket = socketIOClient(this.endpoint);
-    socket.on("chat message", data => this.result = [...this.result, data])
+    socket.on("chat message", data => {
+      this.result = [...this.result, data]
+      console.log('ey')
+    })
   },
   methods:{
     logout(){
