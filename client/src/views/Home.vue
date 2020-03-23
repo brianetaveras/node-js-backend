@@ -13,6 +13,7 @@ import User from '@/components/User.vue'
 import socketIOClient from "socket.io-client";
 import userModel from '@/utils/user.js';
 import Chat from '@/components/chat/Chat.vue'
+import axiosWithAuth from '@/utils/axiosWithAuth.js'
 export default {
   name: 'Home',
   components: {
@@ -32,6 +33,12 @@ export default {
     }).catch(err=>{
       console.log(err)
     })
+
+    axiosWithAuth.get('/messages').then(res=>{
+      this.result = res.data
+    })
+
+    
   },
   mounted(){
      const socket = socketIOClient(this.endpoint);
