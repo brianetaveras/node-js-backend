@@ -19,15 +19,6 @@ const server = http.createServer(app);
 const io = socketio(server);
 app.use(require("cors")());
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-  });
-
-  
-
-});
-
 app.get("/", require("./middleware/verifyUsersAuth")(), async (req, res) => {
   const { name } = req.user;
 

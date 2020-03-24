@@ -1,7 +1,7 @@
 <template>
   <div class="message-box">
       <form @submit.prevent="sendMessage">
-      <v-text-field autocomplete="off" v-model="message" outlined placeholder="Type your message"></v-text-field>
+      <v-text-field required autocomplete="off" v-model="message" outlined placeholder="Type your message"></v-text-field>
       </form>
   </div>
 </template>

@@ -44,7 +44,6 @@ export default {
      const socket = socketIOClient(this.endpoint);
     socket.on("chat message", data => {
       this.result = [...this.result, data]
-      console.log('ey')
     })
   },
   methods:{
